@@ -1,16 +1,6 @@
-# Chrome Extension (built with TypeScript + React)
+# Star Bookmark
 
-> This project is a boilerplate project to allow you to quickly build chrome extensions using TypeScript and React.
+Star Bookmark는 GitHub에서 찍어둔 스타를 관리할 수 있는 Chrome 확장입니다.
 
-## Building
-
-1.  Clone repo
-2.  `npm i`
-3.  `npm run dev` to compile once or `npm run watch` to run the dev task in watch mode
-4.  `npm run build` to build a production (minified) version
-
-## Installation
-
-1.  Complete the steps to build the project above
-2.  Go to [_chrome://extensions_](chrome://extensions) in Google Chrome
-3.  With the developer mode checkbox ticked, click **Load unpacked extension...** and select the _dist_ folder from this repo
+이 프로젝트는 [martellaj](https://github.com/martellaj)님의 [chrome-extension-react-typescript-boilerplate
+](https://github.com/martellaj/chrome-extension-react-typescript-boilerplate)로 만들어졌습니다.
