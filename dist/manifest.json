@@ -23,6 +23,7 @@
     },
 
     "permissions": [
-        "http://api.github.com/*"
+        "http://api.github.com/*",
+        "storage"
     ]
 }
