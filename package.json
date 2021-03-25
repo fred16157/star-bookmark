@@ -7,7 +7,7 @@
     "dev": "webpack --config webpack.dev.js",
     "watch": "webpack -w --config webpack.dev.js"
   },
-  "author": "Joe Martella",
+  "author": "fred16157",
   "license": "MIT",
   "devDependencies": {
     "@types/chrome": "^0.0.60",
@@ -24,6 +24,8 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "fontsource-roboto": "^4.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   }

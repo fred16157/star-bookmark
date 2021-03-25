@@ -9,3 +9,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
     return isResponseAsync;
 });
+
+chrome.runtime.onStartup.addListener(() => {
+    
+});
