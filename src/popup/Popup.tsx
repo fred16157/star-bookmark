@@ -1,6 +1,7 @@
 import React from "react";
 import { RepositoryInfo, GithubUser } from "../github";
-import "./Popup.scss";
+import { AppBar, Toolbar, Box, List, ListItem, ListItemText, LinearProgress, Typography } from "@material-ui/core";
+//import "./Popup.scss";
 
 interface PopupState {
   stars: RepositoryInfo[];
@@ -25,35 +26,43 @@ export default class Popup extends React.Component<any, PopupState> {
     .catch(err => {
       console.log(err);
     });
-  }  
+  }
 
+  ListItemLink(props) {
+    return <ListItem button divider component="a" {...props} />;
+  }
   render() {
     if(!this.state.isLoaded) {
-      return <div className="empty-box">
-        <h2>불러오는 중</h2>
-      </div>
+      return (
+        <Box width="400px" height="600px" className="mid">
+          <Typography variant="h5">불러오는 중</Typography>
+          <LinearProgress />
+        </Box>
+      )
     }
     else {
       const repos = this.state.stars.map((repo, i) => {
         console.log(repo);
         return (
-          <div className="box">
-            <div className="box-content">
-              <a href={repo.htmlUrl} target="_blank">
-                <h3>{repo.name}</h3>
-                <p>{repo.description}</p>
-              </a>
-            </div>
-            <hr/>
-          </div>
+          <this.ListItemLink href={repo.htmlUrl} target="_blank">
+            <ListItemText primary={repo.name} secondary={repo.description} ></ListItemText>
+          </this.ListItemLink>
         )
       });
       console.log(repos);
       return (
-        <div>
-          <h2>스타 목록</h2>
-          {repos}
-        </div>
+        <Box width="400px" height="600px" padding="0px" margin="0px">
+          <AppBar position="static">
+            <Toolbar variant="dense">
+              <Typography variant="h6" color="inherit">
+                스타 목록
+              </Typography>
+            </Toolbar>
+          </AppBar>
+          <List>
+            {repos}
+          </List>
+        </Box>
       );
     } 
   } 

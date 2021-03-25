@@ -4,4 +4,4 @@ export default function EmptyPage(props) {
     return (
         <div className=""></div>
     )
-} 
+}
