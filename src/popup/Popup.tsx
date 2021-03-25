@@ -120,7 +120,7 @@ export default class Popup extends React.Component<any, PopupState> {
       });
       console.log(repos);
       return (
-        <Box width="500px" height="600px" padding="0px" margin="0px">
+        <div style={{width: "500px", height: "600px", padding: "0px", margin: "0px"}}>
           <AppBar position="static">
             <Toolbar variant="dense">
               <Typography variant="h6" color="inherit">
@@ -130,7 +130,16 @@ export default class Popup extends React.Component<any, PopupState> {
               <Menu
                 id="simple-menu"
                 anchorEl={this.state.anchor}
+                disableScrollLock={true}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
                 keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
                 open={Boolean(this.state.anchor)}
                 onClose={this.onMenuClose}
               >
@@ -146,7 +155,7 @@ export default class Popup extends React.Component<any, PopupState> {
               <SpeedDialAction icon={<Refresh/>} tooltipTitle="새로고침" tooltipOpen onClick={this.onUserChanged}/>
               <SpeedDialAction icon={<Person/>} tooltipTitle="사용자 변경" tooltipOpen onClick={this.onUserChangeButtonClicked}/>
           </SpeedDial> */}
-        </Box>
+        </div>
       );
     } 
   } 
