@@ -61,11 +61,10 @@ export default class Popup extends React.Component<any, PopupState> {
       fetch(`http://api.github.com/users/${user}/starred`)
       .then(async res => {
         this.setState({ stars: RepositoryInfo.getReposFromJsonArray(await res.json()), isLoaded: true, needInit: false, user: user });
-        console.log('log');
       })
       .catch(err => {
         console.log(err);
-        this.setState({stars: [], isLoaded: false, needInit: true, user: null }); 
+        this.setState({stars: [], isLoaded: false, needInit: true, user: null, anchor: null });
       });
     });
   }
