@@ -2,25 +2,32 @@ import React from "react";
 import { Box, Button, makeStyles, TextField, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles({
-    textField: {
-        margin: 8,
-    },
     button: {
+        marginTop: "8px",
         float: "right"
     }
 });
 
-export default function UserInfoInput(props) {
+export default function UserInfoInput({ onUserChanged }) {
     const classes = useStyles();
     const [user, setUser] = React.useState('');
-    const onNameChanged = (event) => {
+
+    const onValueChange = (event) => {
         setUser(event.target.value);
     }
+
+    const onUserSubmit = (event) => {
+        chrome.storage.sync.set({
+            user: user
+        }, () => {
+            onUserChanged();
+        });
+    }
     return (
-        <Box>
+        <form onSubmit={onUserSubmit}>
             <Typography variant="h6">GitHub ID 설정</Typography>
-            <TextField label="GitHub ID" className={classes.textField} fullWidth value={user} onChange={onNameChanged} />
-            <Button variant="contained" className={classes.button} color="primary">확인</Button>
-        </Box>
+            <TextField label="GitHub ID" fullWidth value={user} onChange={onValueChange}/>
+            <Button variant="contained" type="submit" className={classes.button} color="primary">확인</Button>
+        </form>
     );
 }
