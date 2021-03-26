@@ -2,8 +2,9 @@ import React from "react";
 import { RepositoryInfo, GithubUser } from "../github";
 import UserInfoInput from "./components/UserInfoInput";
 import { AppBar, Toolbar, Box, List, ListItem, ListItemText, LinearProgress, Typography, makeStyles, Button, MenuItem, Menu, IconButton } from "@material-ui/core";
-import { SpeedDial, SpeedDialAction, SpeedDialIcon } from "@material-ui/lab";
 import MenuIcon from "@material-ui/icons/Menu";
+import { NoEncryptionSharp, RemoveShoppingCartSharp } from "@material-ui/icons";
+import NoRepos from "./components/NoRepos";
 //import "./Popup.scss";
 
 interface PopupState {
@@ -148,9 +149,14 @@ export default class Popup extends React.Component<any, PopupState> {
               </Menu>
             </Toolbar>
           </AppBar>
-          <List>
-            {repos}
-          </List>
+          {repos.length > 0 ? 
+            ( <List>
+                {repos}
+              </List>
+            ) : (
+              <NoRepos onRefreshClicked={this.onUserChanged} onUserChangeClicked={this.onUserChangeButtonClicked}/>
+            )
+          }
           {/* <SpeedDial ariaLabel="speedDial" icon={<SpeedDialIcon/>} open={this.state.isDialOpen} onOpen={this.onDialOpen} onClose={this.onDialClose} style={{position: "absolute", bottom: "8px", right: "8px"}}>
               <SpeedDialAction icon={<Refresh/>} tooltipTitle="새로고침" tooltipOpen onClick={this.onUserChanged}/>
               <SpeedDialAction icon={<Person/>} tooltipTitle="사용자 변경" tooltipOpen onClick={this.onUserChangeButtonClicked}/>
