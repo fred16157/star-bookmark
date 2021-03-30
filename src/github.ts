@@ -20,9 +20,9 @@ class RepositoryInfo {
         this.owner = new GithubUser(json.owner);
         this.url = json.url;
         this.htmlUrl = json.html_url;
-        this.createdAt = json.created_at;
-        this.updatedAt = json.updated_at;
-        this.pushedAt = json.pushed_at;
+        this.createdAt = new Date(json.created_at);
+        this.updatedAt = new Date(json.updated_at);
+        this.pushedAt = new Date(json.pushed_at);
         this.language = json.language;
         this.forks = json.forks;
         this.openIssues = json.open_issues;
